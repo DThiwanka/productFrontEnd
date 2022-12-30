@@ -4,9 +4,12 @@ import {
   makeStyles,
   TextField,
   Button,
+  Container,
+  Grid,
 } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
 import { getProductById, updateProductById } from "../actions/product";
+import Navbar from "../components/Navbar";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -66,68 +69,188 @@ function Update() {
 
   return (
     <React.Fragment>
-      <h1 style={{ textAlign: "center" }}>Update Product</h1>
+    <Navbar />
+    <Container>
+      <div style={{ display: "flex", textAlign: "center" }}>
+        <div
+          style={{
+            fontStyle: "normal",
+            letterSpacing: "0.15em",
+            fontSize: "36px",
+            fontWeight: "900",
+            marginBottom: "30px",
+          }}
+        >
+          PRODUCTS {" > "}
+        </div>{" "}
+        
+        
+        Update Product
+
+      </div>
+      {/* <div style={{ textAlign: "center" }}>Create Prodct</div> */}
       <form
-        className={classes.root}
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "column",
-        }}
+        // className={classes.root}
+        // style={{
+        //   display: "flex",
+
+        //   flexDirection: "column",
+        // }}
         onSubmit={handleSubmit}
       >
-        <TextField
-          name="sku"
-          label="SKU"
-          value={inputs.sku}
-          onChange={handleChange}
-          fullWidth
-        />
-        <TextField
-          name="quantity"
-          label="Quentity"
-          value={inputs.quantity}
-          onChange={handleChange}
-          fullWidth
-        />
-        <TextField
-          name="productname"
-          label="Product Name"
-          value={inputs.productname}
-          onChange={handleChange}
-          fullWidth
-        />
+        {/* <div style={{ display: "flex", flexDirection: "row" }}>
+          <p>SKU</p>
+          <TextField
+            variant="filled"
+            type="text"
+            name="sku"
+            value={inputs.sku}
+            onChange={handleChange}
+            fullWidth
+          />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-around",
+          }}
+        >
+          <div>
+            <p>SKU</p>
+            <TextField
+              variant="filled"
+              type="text"
+              name="sku"
+              value={inputs.sku}
+              onChange={handleChange}
+              fullWidth
+            />
+          </div>
+          <div>
+            <p>SKU</p>
+            <TextField
+              variant="filled"
+              type="text"
+              name="sku"
+              value={inputs.sku}
+              onChange={handleChange}
+              fullWidth
+            />
+          </div>
+        </div> */}
 
-        <TextField
-          name="image"
-          label="Image"
-          value={inputs.image}
-          onChange={handleChange}
-          fullWidth
-        />
+        <Grid container spacing={5}>
+          <Grid item xs={6} style={{ paddingLeft: "0px" }}>
+            <div style={{ display: "flex", flexDirection: "row" }}>
+              <p style={{ marginRight: "40px", }}>SKU</p>
+              <TextField
+              
+                variant="filled"
+                type="text"
+                name="sku"
+                value={inputs.sku}
+                onChange={handleChange}
+                fullWidth
+              />
+            </div>
+          </Grid>
 
+          <Grid item xs={6}></Grid>
+          <Grid item xs={6} style={{ paddingLeft: "0px" }}>
+            <div style={{ display: "flex", flexDirection: "row" }}>
+              <p style={{ marginRight: "30px" }}>Name</p>
+              <TextField
+                type="text"
+                variant="filled"
+                name="productname"
+                value={inputs.productname}
+                onChange={handleChange}
+                fullWidth
+              />
+            </div>
+          </Grid>
+          <Grid item xs={6} style={{ paddingLeft: "0px" }}>
+            <div style={{ display: "flex", flexDirection: "row" }}>
+              <p style={{ marginRight: "30px" }}>Quantity</p>
+              <TextField
+                type="text"
+                variant="filled"
+                name="quantity"
+                value={inputs.quantity}
+                onChange={handleChange}
+                fullWidth
+              />
+            </div>
+          </Grid>
+          <Grid item xs={12} style={{ paddingLeft: "0px" }}>
+            <p style={{ marginRight: "30px" }}>Product Description</p>
+            <span>A small description about the product</span>
+            <TextField
+              type="text"
+              variant="filled"
+              multiline={10}
+              name="productdesc"
+              value={inputs.productdesc}
+              onChange={handleChange}
+              fullWidth
+            />
+          </Grid>
 
-        <TextField
-          name="productdesc"
-          label="Product Desc"
-          value={inputs.productdesc}
-          onChange={handleChange}
-          fullWidth
-        />
+          <Grid item xs={12} style={{ paddingLeft: "0px" }}>
+            <p style={{ marginRight: "30px" }}>Product Image</p>
+            <span>Add Image</span>
+            <TextField
+              type="text"
+              variant="filled"
+              name="image"
+              value={inputs.image}
+              onChange={handleChange}
+              fullWidth
+            />
+          </Grid>
 
+          <Grid item xs={12} style={{ paddingLeft: "0px" }}>
+            <div style={{ display: "flex", flexDirection: "row" }}>
+            <p style={{ marginRight: "30px" }}>Product Images</p>
+            <a style={{marginTop:"15px"}} href="">Add Images</a>
+            </div>
+           
+            <span>JPEG, PNG, SVG or GIF</span>
+            <br/>
+            <span>{"(Maximum file size 50MB)"}</span>
+            
+            {/* <TextField
+              type="text"
+              variant="filled"
+              multiline={10}
+              name="productdesc"
+              value={inputs.productdesc}
+              onChange={handleChange}
+              fullWidth
+            /> */}
+          </Grid>
+          
+        </Grid>
+        
 
-
-        <Button
-
+       <div align="right">
+       <Button
+          
           type="submit"
           variant="contained"
           color="primary"
         >
           Submit
         </Button>
+       </div>
+
+       
+
+        
       </form>
-    </React.Fragment>
+    </Container>
+  </React.Fragment>
   );
 }
 
